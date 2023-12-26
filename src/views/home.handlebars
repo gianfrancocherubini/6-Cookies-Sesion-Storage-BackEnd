@@ -1,5 +1,11 @@
 <h1>Products</h1>
 
+<h1>{{#if usuario}}
+  Bienvenido a la Tienda, {{usuario.nombre}}!
+  {{else}}Bienvenido a la Tienda, Invitado!
+  {{/if}}
+</h1>
+
 {{#each products}}
   <div class="product">
     <img src="{{thumbnails.[0]}}" alt="{{title}}">

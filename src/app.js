@@ -10,6 +10,7 @@ const path = require('path');
 const mongoose =require(`mongoose`)
 const sessions = require ('express-session')
 const mongoStore = require ('connect-mongo')
+const cookieParser = require('cookie-parser');
 
 const PORT = 3012;
 const app = express();
@@ -20,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(sessions(
     {
         secret:"codercoder123",
@@ -34,6 +36,8 @@ app.use(sessions(
         )
     }
 ))
+
+
 app.use('/home', routerHome)
 app.use('/api/carts', routerCarrito)
 app.use('/api/registro', routerRegistro)

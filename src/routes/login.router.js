@@ -29,10 +29,11 @@ router.post('/', async(req, res)=>{
     }
     
     req.session.usuario={
-        nombre:usuario.nombre, email:usuario.email
+        nombre:usuario.nombre, 
+        email:usuario.email
     }
 
-    res.redirect('/api/perfil')
+    res.redirect('/home')
 
 })
 
