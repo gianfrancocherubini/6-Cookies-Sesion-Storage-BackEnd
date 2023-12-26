@@ -1,9 +1,13 @@
 <h2>Registro usuarios:</h2>
 <hr>
-<form action="/api/sessions/registro" method="post">
+<form action="/api/registro" method="post">
 
-    {{#if error}}
-        <div style="color: red;">{{error}}</div>
+    {{#if errorMessage}}
+  <div style="color: red;">{{errorMessage}}</div>
+    {{/if}}
+
+    {{#if message}}
+        <div style="color: green;">{{message}}</div>
     {{/if}}
 
     <input type="text" name="nombre" placeholder="nombre">

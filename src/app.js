@@ -1,14 +1,14 @@
 const express = require('express');
 const routerCarrito = require('./routes/carrito.router');
 const { router } = require('./routes/products.router');
-const routerSessions =require ('./routes/session.router')
+const routerRegistro =require ('./routes/registro.router')
 const {engine}=require('express-handlebars')
 const path = require('path');
 const mongoose =require(`mongoose`)
 const sessions = require ('express-session')
 const mongoStore = require ('connect-mongo')
 
-const PORT = 3015;
+const PORT = 3012;
 const app = express();
 
 app.engine('handlebars', engine());
@@ -32,7 +32,7 @@ app.use(sessions(
 ))
 app.use('/home', router)
 app.use('/api/carts', routerCarrito)
-app.use('/api/sessions', routerSessions)
+app.use('/api/registro', routerRegistro)
 
 const server = app.listen(PORT, () => {
     console.log(`Server escuchando en puerto ${PORT}`);
