@@ -1,6 +1,7 @@
 const express = require('express');
 const routerCarrito = require('./routes/carrito.router');
 const { router } = require('./routes/products.router');
+const routerSessions =require ('./routes/session.router')
 const {engine}=require('express-handlebars')
 const path = require('path');
 const mongoose =require(`mongoose`)
@@ -29,11 +30,9 @@ app.use(sessions(
         )
     }
 ))
-
-
 app.use('/home', router)
 app.use('/api/carts', routerCarrito)
-
+app.use('/api/sessions', routerSessions)
 
 const server = app.listen(PORT, () => {
     console.log(`Server escuchando en puerto ${PORT}`);
