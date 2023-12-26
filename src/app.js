@@ -1,7 +1,9 @@
 const express = require('express');
 const routerCarrito = require('./routes/carrito.router');
-const { router } = require('./routes/products.router');
+const routerHome  = require('./routes/products.router');
 const routerRegistro =require ('./routes/registro.router')
+const routerLogin =require ('./routes/login.router')
+const routerPerfil =require ('./routes/perfil.router')
 const {engine}=require('express-handlebars')
 const path = require('path');
 const mongoose =require(`mongoose`)
@@ -20,7 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(sessions(
     {
         secret:"codercoder123",
-        resave: true, saveUninitialized: true,
+        resave: true, 
+        saveUninitialized: true,
         store: mongoStore.create(
             {
                 mongoUrl:'mongodb+srv://cherussa:chilindrina123@gianfrancocluster.km1jj9i.mongodb.net/?retryWrites=true&w=majority',
@@ -30,13 +33,12 @@ app.use(sessions(
         )
     }
 ))
-app.use('/home', router)
+app.use('/home', routerHome)
 app.use('/api/carts', routerCarrito)
 app.use('/api/registro', routerRegistro)
+app.use('/api/perfil', routerPerfil)
+app.use('/api/login', routerLogin)
 
-const server = app.listen(PORT, () => {
-    console.log(`Server escuchando en puerto ${PORT}`);
-});
 
 const connectToDatabase = async () => {
     try {
@@ -48,3 +50,8 @@ const connectToDatabase = async () => {
 };
 
 connectToDatabase();
+
+
+const server = app.listen(PORT, () => {
+    console.log(`Server escuchando en puerto ${PORT}`);
+});

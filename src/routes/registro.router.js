@@ -34,7 +34,7 @@ router.post('/',async(req,res)=>{
     let usuario
     try {
         usuario=await usuariosModelo.create({nombre, email, password})
-        res.redirect(`/api/registro?message=Usuario ${email} registrado correctamente`)
+        res.redirect(`/api/login?message=Usuario ${email} registrado correctamente`)
         
     } catch (error) {
         res.redirect('/api/registro?error=Error inesperado. Reintente en unos minutos')

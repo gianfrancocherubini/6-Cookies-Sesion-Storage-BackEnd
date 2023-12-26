@@ -112,4 +112,4 @@ router.put('/:pid', async (req, res) => {
     }
 });
 
-module.exports = {router} ;
+module.exports = router ;
