@@ -4,6 +4,7 @@ const routerHome  = require('./routes/products.router');
 const routerRegistro =require ('./routes/registro.router')
 const routerLogin =require ('./routes/login.router')
 const routerPerfil =require ('./routes/perfil.router')
+const routerLogout =require ('./routes/logout.router')
 const {engine}=require('express-handlebars')
 const path = require('path');
 const mongoose =require(`mongoose`)
@@ -38,6 +39,7 @@ app.use('/api/carts', routerCarrito)
 app.use('/api/registro', routerRegistro)
 app.use('/api/perfil', routerPerfil)
 app.use('/api/login', routerLogin)
+app.use('/api/logout', routerLogout)
 
 
 const connectToDatabase = async () => {
