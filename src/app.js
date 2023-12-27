@@ -38,7 +38,19 @@ app.use(sessions(
 ))
 
 
-app.use('/home', routerHome)
+app.use('/home', (req, res, next) => {
+    // Pasa la información del usuario a la vista "home" solo si se ha iniciado sesión
+    if (req.session.usuario) {
+        res.locals.usuario = req.session.usuario;
+
+        // Verifica si la consulta 'login' está presente y muestra el mensaje de bienvenida
+        if (req.query.login === 'success') {
+            res.locals.welcomeMessage = true;
+        }
+    }
+
+    next();
+}, routerHome);
 app.use('/api/carts', routerCarrito)
 app.use('/api/registro', routerRegistro)
 app.use('/api/perfil', routerPerfil)
