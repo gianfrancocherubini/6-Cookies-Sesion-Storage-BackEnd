@@ -29,11 +29,16 @@ router.post('/',async(req,res)=>{
     if(existe){
         return res.redirect(`/api/registro?errorMessage=Existen usuarios con email ${email} en la BD`)
     }
+
+    let rol = 'usuario';
+    if (email === 'adminCoder@coder.com' && password === 'coder123') {
+        rol = 'administrador';
+    }
     
     password=crypto.createHmac("sha256", "codercoder123").update(password).digest("hex")
     let usuario
     try {
-        usuario=await usuariosModelo.create({nombre, email, password})
+        usuario=await usuariosModelo.create({nombre, email, password, rol })
         res.redirect(`/api/login?message=Usuario ${email} registrado correctamente`)
         
     } catch (error) {

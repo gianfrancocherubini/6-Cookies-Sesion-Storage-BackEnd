@@ -30,7 +30,8 @@ router.post('/', async(req, res)=>{
     
     req.session.usuario={
         nombre:usuario.nombre, 
-        email:usuario.email
+        email:usuario.email,
+        rol: usuario.rol
     }
 
     res.redirect('/home')
